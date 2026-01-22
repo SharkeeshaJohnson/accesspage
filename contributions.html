@@ -78,9 +78,12 @@
             backdrop-filter: blur(20px);
         }
 
+        .header.scrolled .header__main {
+            border-bottom: 1px solid var(--color-text);
+        }
+
         .header__main {
             background: #ECECEC;
-            border-bottom: 1px solid var(--color-text);
         }
 
         .header__inner {
@@ -108,9 +111,6 @@
             color: #C57741;
         }
 
-        .header.header--scrolled .header__main {
-            border-bottom: 1px solid var(--color-text);
-        }
 
         .header__cta {
             display: none;
@@ -143,9 +143,67 @@
             width: calc(100% + 12%);
             margin-left: -6%;
             margin-right: -6%;
-            aspect-ratio: 4 / 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .hero__bento {
             background: var(--color-bg-alt);
             border: 1px solid var(--color-border);
+        }
+
+        .hero__bento-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .hero__bento--half {
+            flex: 1;
+        }
+
+        .hero__bento--orange {
+            background: #C57741;
+        }
+
+        .hero__bento--green {
+            background: #2E6F40;
+        }
+
+        .hero__bento--large {
+            grid-column: span 2;
+            aspect-ratio: 4 / 3;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 40px;
+            background: #595552;
+        }
+
+        .hero__bento-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .hero__bento-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            color: var(--color-white);
+            line-height: 1.05;
+            text-align: left;
+        }
+
+        .hero__bento-subtitle {
+            font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            line-height: 1.6;
+            color: var(--color-white);
+            text-transform: uppercase;
         }
 
         /* Tasks UI */
@@ -157,16 +215,16 @@
 
         .tasks__tabs {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 8px;
             margin-bottom: 32px;
         }
 
         .tasks__tab {
             padding: 12px 24px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
             text-transform: uppercase;
             color: var(--color-text-muted);
             background: transparent;
@@ -177,108 +235,176 @@
         }
 
         .tasks__tab--active {
-            background: var(--color-text);
+            background: #C57741;
             color: var(--color-white);
-            border-color: var(--color-text);
+            border-color: #C57741;
         }
 
-        .tasks__grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-
-        .task-card {
-            background: var(--color-bg);
-            border: 1px solid var(--color-border);
-            padding: 24px;
+        .tasks__list {
             display: flex;
             flex-direction: column;
-            gap: 16px;
         }
 
-        .task-card__header {
-            display: flex;
-            align-items: flex-start;
+        .task-item {
+            display: grid;
+            grid-template-columns: 44px 1fr 260px 140px;
+            align-items: center;
             gap: 16px;
+            padding: 18px 0;
+            border-bottom: 1px solid var(--color-border);
         }
 
-        .task-card__icon {
-            width: 48px;
-            height: 48px;
+        .task-item:first-child {
+            border-top: 1px solid var(--color-border);
+        }
+
+        .task-item__icon {
+            width: 44px;
+            height: 44px;
             background: var(--color-bg-alt);
             border: 1px solid var(--color-border);
-            border-radius: 12px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
         }
 
-        .task-card__icon svg {
-            width: 24px;
-            height: 24px;
+        .task-item__icon svg {
+            width: 20px;
+            height: 20px;
             fill: var(--color-text);
         }
 
-        .task-card__info {
-            flex: 1;
+        .task-item__info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            min-width: 0;
         }
 
-        .task-card__title {
-            font-size: 0.875rem;
+        .task-item__title {
+            font-size: 1.1rem;
             font-weight: 600;
             letter-spacing: -0.01em;
             text-transform: uppercase;
             color: var(--color-text);
-            margin-bottom: 8px;
         }
 
-        .task-card__badges {
+        .task-item__description {
+            font-size: 0.95rem;
+            font-weight: 400;
+            line-height: 1.4;
+            color: var(--color-text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .task-item__badges {
             display: flex;
             gap: 8px;
             align-items: center;
+            justify-content: flex-end;
         }
 
-        .task-card__points {
-            font-size: 0.625rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
+        .task-item__points {
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
             text-transform: uppercase;
-            color: var(--color-text-muted);
-            background: var(--color-bg);
-            border: 1px solid var(--color-border);
-            padding: 4px 8px;
-            border-radius: 4px;
+            color: var(--color-text);
+            white-space: nowrap;
+            min-width: 120px;
+            text-align: left;
         }
 
-        .task-card__badge {
-            font-size: 0.625rem;
+        .task-item__badge {
+            font-size: 0.875rem;
             font-weight: 500;
             letter-spacing: 0.05em;
             text-transform: uppercase;
             color: var(--color-accent);
             background: rgba(139, 115, 85, 0.1);
-            padding: 4px 8px;
+            padding: 12px 20px;
             border-radius: 4px;
+            white-space: nowrap;
         }
 
-        .task-card__description {
-            font-size: 0.75rem;
-            font-weight: 400;
-            line-height: 1.5;
-            color: var(--color-text-muted);
-        }
-
-        .task-card__actions {
+        .task-item__actions {
             display: flex;
             gap: 8px;
-            margin-top: auto;
+            justify-content: flex-end;
         }
 
-        .task-card__btn {
-            padding: 10px 16px;
-            font-size: 0.625rem;
+        .task-item__btn {
+            padding: 10px 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--color-white);
+            background: #2E6F40;
+            border: 1px solid #2E6F40;
+            border-radius: 160px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            white-space: nowrap;
+            width: 130px;
+        }
+
+        .task-item__btn:hover {
+            background: #245633;
+            border-color: #245633;
+            color: var(--color-white);
+        }
+
+        .task-item__btn svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        .task-item__status {
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            white-space: nowrap;
+            width: 130px;
+        }
+
+        .task-item__status svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--color-accent);
+        }
+
+        /* Hidden tasks */
+        .task-item--hidden {
+            display: none !important;
+        }
+
+        /* Unlock button */
+        .tasks__unlock {
+            display: flex;
+            justify-content: center;
+            padding: 32px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .tasks__unlock-btn {
+            padding: 16px 32px;
+            font-size: 0.875rem;
             font-weight: 500;
             letter-spacing: 0.05em;
             text-transform: uppercase;
@@ -287,38 +413,29 @@
             border: 1px solid var(--color-text);
             border-radius: 160px;
             cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            display: inline-flex;
+            transition: all 0.3s var(--transition-smooth);
+            display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
 
-        .task-card__btn:hover {
+        .tasks__unlock-btn:hover {
             background: var(--color-text);
             color: var(--color-white);
         }
 
-        .task-card__btn svg {
-            width: 12px;
-            height: 12px;
+        .tasks__unlock-btn svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s var(--transition-smooth);
         }
 
-        .task-card__status {
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--color-accent);
-            display: flex;
-            align-items: center;
-            gap: 6px;
+        .tasks__unlock-btn:hover svg {
+            transform: translateY(2px);
         }
 
-        .task-card__status svg {
-            width: 14px;
-            height: 14px;
-            fill: var(--color-accent);
+        .tasks__unlock--hidden {
+            display: none;
         }
 
         /* ================================
@@ -513,6 +630,16 @@
                 width: 100%;
                 margin-left: 0;
                 margin-right: 0;
+                grid-template-columns: 2fr 1fr;
+                gap: 12px;
+            }
+
+            .hero__bento--large {
+                padding: 32px;
+            }
+
+            .hero__bento-title {
+                font-size: clamp(2rem, 4vw, 3rem);
             }
 
             .tasks {
@@ -521,13 +648,40 @@
                 margin-right: 0;
             }
 
-            .tasks__grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
+            .task-item {
+                display: grid;
+                grid-template-columns: 44px 1fr;
+                grid-template-rows: auto auto auto;
+                gap: 8px 12px;
+                padding: 20px 0;
             }
 
-            .task-card {
-                padding: 20px;
+            .task-item__icon {
+                grid-row: 1;
+                grid-column: 1;
+            }
+
+            .task-item__info {
+                grid-row: 1;
+                grid-column: 2;
+            }
+
+            .task-item__badges {
+                grid-row: 2;
+                grid-column: 2;
+            }
+
+            .task-item__actions {
+                grid-row: 3;
+                grid-column: 2;
+            }
+
+            .task-item__badges {
+                justify-content: flex-start;
+            }
+
+            .task-item__actions {
+                justify-content: flex-start;
             }
 
             .footer {
@@ -604,43 +758,117 @@
                 padding: 20px 0;
             }
 
-            .tasks__tabs {
-                gap: 6px;
-                margin-bottom: 20px;
-            }
-
-            .tasks__tab {
-                padding: 10px 16px;
-                font-size: 0.65rem;
-            }
-
-            .tasks__grid {
+            .hero__ui-box {
                 grid-template-columns: 1fr;
                 gap: 10px;
             }
 
-            .task-card {
-                padding: 16px;
+            .hero__ui-box {
+                display: flex;
+                flex-direction: column;
                 gap: 12px;
             }
 
-            .task-card__icon {
-                width: 40px;
-                height: 40px;
+            .hero__bento-stack {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+                width: 100%;
             }
 
-            .task-card__icon svg {
-                width: 20px;
-                height: 20px;
+            .hero__bento--half {
+                aspect-ratio: 1 / 1;
+                min-height: 120px;
             }
 
-            .task-card__title {
+            .hero__bento--large {
+                aspect-ratio: auto;
+                min-height: 250px;
+                padding: 24px;
+            }
+
+            .hero__bento-title {
+                font-size: clamp(1.75rem, 8vw, 2.5rem);
+            }
+
+            .hero__bento-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .tasks__tabs {
+                gap: 6px;
+                margin-bottom: 20px;
+                flex-wrap: wrap;
+            }
+
+            .tasks__tab {
+                padding: 10px 16px;
                 font-size: 0.75rem;
             }
 
-            .task-card__btn {
-                padding: 8px 12px;
-                font-size: 0.6rem;
+            .task-item {
+                display: grid;
+                grid-template-columns: 36px 1fr;
+                grid-template-rows: auto auto auto;
+                gap: 8px 12px;
+                padding: 16px 0;
+            }
+
+            .task-item__icon {
+                grid-row: 1;
+                grid-column: 1;
+                width: 36px;
+                height: 36px;
+            }
+
+            .task-item__icon svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .task-item__info {
+                grid-row: 1;
+                grid-column: 2;
+            }
+
+            .task-item__badges {
+                grid-row: 2;
+                grid-column: 2;
+            }
+
+            .task-item__actions {
+                grid-row: 3;
+                grid-column: 2;
+            }
+
+            .task-item__title {
+                font-size: 0.9rem;
+            }
+
+            .task-item__description {
+                font-size: 0.8rem;
+                white-space: normal;
+            }
+
+            .task-item__btn {
+                padding: 10px 20px;
+                font-size: 0.75rem;
+                width: auto;
+                min-width: 120px;
+            }
+
+            .task-item__badges {
+                gap: 8px;
+            }
+
+            .task-item__points {
+                font-size: 0.75rem;
+            }
+
+            .task-item__status {
+                width: auto;
+                min-width: 110px;
+                font-size: 0.75rem;
             }
 
             .footer {
@@ -741,196 +969,184 @@
     <main class="main-content">
         <div class="container">
             <section class="hero">
-                <div class="hero__ui-box"></div>
+                <div class="hero__ui-box">
+                    <div class="hero__bento hero__bento--large">
+                        <div class="hero__bento-content">
+                            <h1 class="hero__bento-title">Your contributions to your private space starts from here.</h1>
+                            <p class="hero__bento-subtitle">The credits you earn will manifest as AI credits upon the public release of our space.</p>
+                        </div>
+                    </div>
+                    <div class="hero__bento-stack">
+                        <div class="hero__bento hero__bento--half hero__bento--green"></div>
+                        <div class="hero__bento hero__bento--half hero__bento--orange"></div>
+                    </div>
+                </div>
                 <div class="tasks">
                         <div class="tasks__tabs">
                             <button class="tasks__tab tasks__tab--active">All Tasks</button>
                             <button class="tasks__tab">Social</button>
                             <button class="tasks__tab">Completed</button>
                         </div>
-                        <div class="tasks__grid">
-                            <!-- Sign up bonus -->
-                            <div class="task-card">
-                                <div class="task-card__header">
-                                    <div class="task-card__icon">
-                                        <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-                                    </div>
-                                    <div class="task-card__info">
-                                        <h3 class="task-card__title">Sign Up Bonus</h3>
-                                        <div class="task-card__badges">
-                                            <span class="task-card__points">+100 PTS</span>
-                                        </div>
-                                    </div>
+                        <div class="tasks__list">
+                            <!-- Follow on TikTok -->
+                            <div class="task-item" data-status="pending" data-category="social">
+                                <div class="task-item__icon">
+                                    <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/></svg>
                                 </div>
-                                <p class="task-card__description">You're on the list. Keep going to earn more points.</p>
-                                <div class="task-card__actions">
-                                    <span class="task-card__status">
+                                <div class="task-item__info">
+                                    <h3 class="task-item__title">Follow on TikTok</h3>
+                                    <p class="task-item__description">Follow us on TikTok to watch quick demos and announcements.</p>
+                                </div>
+                                <div class="task-item__badges">
+                                    <span class="task-item__points">+100 CREDITS</span>
+                                                                    </div>
+                                <div class="task-item__actions">
+                                    <button class="task-item__btn">Connect <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></button>
+                                </div>
+                            </div>
+
+                            <!-- Subscribe on YouTube -->
+                            <div class="task-item" data-status="pending" data-category="social">
+                                <div class="task-item__icon">
+                                    <svg viewBox="0 0 24 24"><path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5l6-3.5-6-3.5v7z"/></svg>
+                                </div>
+                                <div class="task-item__info">
+                                    <h3 class="task-item__title">Subscribe on YouTube</h3>
+                                    <p class="task-item__description">Join our YouTube for fresh content and first access.</p>
+                                </div>
+                                <div class="task-item__badges">
+                                    <span class="task-item__points">+100 CREDITS</span>
+                                                                    </div>
+                                <div class="task-item__actions">
+                                    <button class="task-item__btn">Connect <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></button>
+                                </div>
+                            </div>
+
+                            <!-- Like our post on X -->
+                            <div class="task-item" data-status="pending" data-category="social">
+                                <div class="task-item__icon">
+                                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                                </div>
+                                <div class="task-item__info">
+                                    <h3 class="task-item__title">Like Our Post on X</h3>
+                                    <p class="task-item__description">Like our "hello world" post on X</p>
+                                </div>
+                                <div class="task-item__badges">
+                                    <span class="task-item__points">+50 CREDITS</span>
+                                                                    </div>
+                                <div class="task-item__actions">
+                                    <button class="task-item__btn">Connect <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></button>
+                                </div>
+                            </div>
+
+                            <!-- Join Telegram -->
+                            <div class="task-item" data-status="pending" data-category="social">
+                                <div class="task-item__icon">
+                                    <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                                </div>
+                                <div class="task-item__info">
+                                    <h3 class="task-item__title">Join Telegram</h3>
+                                    <p class="task-item__description">Get announcements and community updates in real time.</p>
+                                </div>
+                                <div class="task-item__badges">
+                                    <span class="task-item__points">+100 CREDITS</span>
+                                                                    </div>
+                                <div class="task-item__actions">
+                                    <button class="task-item__btn">Connect <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></button>
+                                </div>
+                            </div>
+
+                            <!-- Invite a Friend -->
+                            <div class="task-item" data-status="pending" data-category="social">
+                                <div class="task-item__icon">
+                                    <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                                </div>
+                                <div class="task-item__info">
+                                    <h3 class="task-item__title">Invite a Friend</h3>
+                                    <p class="task-item__description">Move up faster when they join through you.</p>
+                                </div>
+                                <div class="task-item__badges">
+                                    <span class="task-item__points">+100 CREDITS</span>
+                                                                    </div>
+                                <div class="task-item__actions">
+                                    <button class="task-item__btn">Share <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></button>
+                                </div>
+                            </div>
+
+                            <!-- Follow us on Instagram -->
+                            <div class="task-item" data-status="pending" data-category="social">
+                                <div class="task-item__icon">
+                                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                                </div>
+                                <div class="task-item__info">
+                                    <h3 class="task-item__title">Follow Us on Instagram</h3>
+                                    <p class="task-item__description">Follow @Anuma for visual updates and stories.</p>
+                                </div>
+                                <div class="task-item__badges">
+                                    <span class="task-item__points">+100 CREDITS</span>
+                                                                    </div>
+                                <div class="task-item__actions">
+                                    <button class="task-item__btn">Connect <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></button>
+                                </div>
+                            </div>
+
+                            <!-- Follow on X.com -->
+                            <div class="task-item" data-status="pending" data-category="social">
+                                <div class="task-item__icon">
+                                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                                </div>
+                                <div class="task-item__info">
+                                    <h3 class="task-item__title">Follow on X.com</h3>
+                                    <p class="task-item__description">Follow @Anuma on X.com for updates</p>
+                                </div>
+                                <div class="task-item__badges">
+                                    <span class="task-item__points">+100 CREDITS</span>
+                                                                    </div>
+                                <div class="task-item__actions">
+                                    <button class="task-item__btn">Connect <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></button>
+                                </div>
+                            </div>
+
+                            <!-- Join Discord -->
+                            <div class="task-item" data-status="pending" data-category="social">
+                                <div class="task-item__icon">
+                                    <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+                                </div>
+                                <div class="task-item__info">
+                                    <h3 class="task-item__title">Join Discord</h3>
+                                    <p class="task-item__description">Meet the community and get help faster.</p>
+                                </div>
+                                <div class="task-item__badges">
+                                    <span class="task-item__points">+100 CREDITS</span>
+                                                                    </div>
+                                <div class="task-item__actions">
+                                    <button class="task-item__btn">Connect <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></button>
+                                </div>
+                            </div>
+
+                            <!-- Sign up bonus (Completed - at bottom) -->
+                            <div class="task-item" data-status="completed" data-category="other">
+                                <div class="task-item__icon">
+                                    <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                                </div>
+                                <div class="task-item__info">
+                                    <h3 class="task-item__title">Sign Up Bonus</h3>
+                                    <p class="task-item__description">You're on the list. Keep going to earn more points.</p>
+                                </div>
+                                <div class="task-item__badges"></div>
+                                <div class="task-item__actions">
+                                    <span class="task-item__status">
                                         <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
                                         Completed
                                     </span>
                                 </div>
                             </div>
-
-                            <!-- Follow on TikTok -->
-                            <div class="task-card">
-                                <div class="task-card__header">
-                                    <div class="task-card__icon">
-                                        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/></svg>
-                                    </div>
-                                    <div class="task-card__info">
-                                        <h3 class="task-card__title">Follow on TikTok</h3>
-                                        <div class="task-card__badges">
-                                            <span class="task-card__points">+100 PTS</span>
-                                            <span class="task-card__badge">New</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="task-card__description">Follow us on TikTok to watch quick demos, clips, and announcements.</p>
-                                <div class="task-card__actions">
-                                    <button class="task-card__btn">Connect TikTok <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></button>
-                                </div>
-                            </div>
-
-                            <!-- Subscribe on YouTube -->
-                            <div class="task-card">
-                                <div class="task-card__header">
-                                    <div class="task-card__icon">
-                                        <svg viewBox="0 0 24 24"><path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5l6-3.5-6-3.5v7z"/></svg>
-                                    </div>
-                                    <div class="task-card__info">
-                                        <h3 class="task-card__title">Subscribe on YouTube</h3>
-                                        <div class="task-card__badges">
-                                            <span class="task-card__points">+100 PTS</span>
-                                            <span class="task-card__badge">New</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="task-card__description">Join our YouTube community for fresh content, helpful insights, and first access to new releases.</p>
-                                <div class="task-card__actions">
-                                    <button class="task-card__btn">Connect YouTube <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></button>
-                                </div>
-                            </div>
-
-                            <!-- Like our post on X -->
-                            <div class="task-card">
-                                <div class="task-card__header">
-                                    <div class="task-card__icon">
-                                        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                                    </div>
-                                    <div class="task-card__info">
-                                        <h3 class="task-card__title">Like Our Post on X</h3>
-                                        <div class="task-card__badges">
-                                            <span class="task-card__points">+50 PTS</span>
-                                            <span class="task-card__badge">New</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="task-card__description">Like our "hello world" post on X</p>
-                                <div class="task-card__actions">
-                                    <button class="task-card__btn">Connect X <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></button>
-                                </div>
-                            </div>
-
-                            <!-- Join Telegram -->
-                            <div class="task-card">
-                                <div class="task-card__header">
-                                    <div class="task-card__icon">
-                                        <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-                                    </div>
-                                    <div class="task-card__info">
-                                        <h3 class="task-card__title">Join Telegram</h3>
-                                        <div class="task-card__badges">
-                                            <span class="task-card__points">+100 PTS</span>
-                                            <span class="task-card__badge">New</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="task-card__description">Join our Telegram to get announcements and community updates in real time.</p>
-                                <div class="task-card__actions">
-                                    <button class="task-card__btn">Connect Telegram <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></button>
-                                </div>
-                            </div>
-
-                            <!-- Invite a Friend -->
-                            <div class="task-card">
-                                <div class="task-card__header">
-                                    <div class="task-card__icon">
-                                        <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-                                    </div>
-                                    <div class="task-card__info">
-                                        <h3 class="task-card__title">Invite a Friend</h3>
-                                        <div class="task-card__badges">
-                                            <span class="task-card__points">+100 PTS</span>
-                                            <span class="task-card__badge">New</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="task-card__description">Invite a friend to move up faster when they join through you.</p>
-                                <div class="task-card__actions">
-                                    <button class="task-card__btn">Share <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></button>
-                                    <button class="task-card__btn">Copy Link <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3"/></svg></button>
-                                </div>
-                            </div>
-
-                            <!-- Follow us on Instagram -->
-                            <div class="task-card">
-                                <div class="task-card__header">
-                                    <div class="task-card__icon">
-                                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                                    </div>
-                                    <div class="task-card__info">
-                                        <h3 class="task-card__title">Follow Us on Instagram</h3>
-                                        <div class="task-card__badges">
-                                            <span class="task-card__points">+100 PTS</span>
-                                            <span class="task-card__badge">New</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="task-card__description"></p>
-                                <div class="task-card__actions">
-                                    <button class="task-card__btn">Complete <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></button>
-                                </div>
-                            </div>
-
-                            <!-- Follow on X.com -->
-                            <div class="task-card">
-                                <div class="task-card__header">
-                                    <div class="task-card__icon">
-                                        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                                    </div>
-                                    <div class="task-card__info">
-                                        <h3 class="task-card__title">Follow on X.com</h3>
-                                        <div class="task-card__badges">
-                                            <span class="task-card__points">+100 PTS</span>
-                                            <span class="task-card__badge">New</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="task-card__description">Follow @Anuma on X.com for updates</p>
-                                <div class="task-card__actions">
-                                    <button class="task-card__btn">Connect X <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></button>
-                                </div>
-                            </div>
-
-                            <!-- Join Discord -->
-                            <div class="task-card">
-                                <div class="task-card__header">
-                                    <div class="task-card__icon">
-                                        <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
-                                    </div>
-                                    <div class="task-card__info">
-                                        <h3 class="task-card__title">Join Discord</h3>
-                                        <div class="task-card__badges">
-                                            <span class="task-card__points">+100 PTS</span>
-                                            <span class="task-card__badge">New</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="task-card__description">Join our Discord to meet the community and get help faster.</p>
-                                <div class="task-card__actions">
-                                    <button class="task-card__btn">Connect Discord <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></button>
-                                </div>
-                            </div>
+                        </div>
+                        <div class="tasks__unlock" id="unlockSection">
+                            <button class="tasks__unlock-btn" id="unlockBtn">
+                                Unlock More Credits
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+                            </button>
                         </div>
                     </div>
             </section>
@@ -997,6 +1213,113 @@
             }
 
             lastScroll = currentScroll;
+        });
+
+        // Tab filtering
+        const tabs = document.querySelectorAll('.tasks__tab');
+        const tasksList = document.querySelector('.tasks__list');
+        const unlockBtn = document.getElementById('unlockBtn');
+        const unlockSection = document.getElementById('unlockSection');
+        let tasksUnlocked = false;
+        const VISIBLE_TASKS = 4;
+
+        function getActiveFilter() {
+            const activeTab = document.querySelector('.tasks__tab--active');
+            return activeTab ? activeTab.textContent.trim().toLowerCase() : 'all tasks';
+        }
+
+        function applyFilter() {
+            const filter = getActiveFilter();
+            const taskItems = document.querySelectorAll('.task-item');
+            let visibleCount = 0;
+
+            taskItems.forEach((item, index) => {
+                const status = item.dataset.status;
+                const category = item.dataset.category;
+                let shouldShow = false;
+
+                if (filter === 'all tasks') {
+                    shouldShow = true;
+                } else if (filter === 'social') {
+                    shouldShow = (category === 'social' && status === 'pending');
+                } else if (filter === 'completed') {
+                    shouldShow = (status === 'completed');
+                }
+
+                if (shouldShow) {
+                    visibleCount++;
+                    // Hide tasks beyond VISIBLE_TASKS if not unlocked
+                    if (!tasksUnlocked && visibleCount > VISIBLE_TASKS) {
+                        item.classList.add('task-item--hidden');
+                        item.style.display = '';
+                    } else {
+                        item.classList.remove('task-item--hidden');
+                        item.style.display = '';
+                    }
+                } else {
+                    item.classList.remove('task-item--hidden');
+                    item.style.display = 'none';
+                }
+            });
+
+            // Show/hide unlock button based on remaining hidden tasks
+            const hiddenTasks = document.querySelectorAll('.task-item--hidden').length;
+            if (hiddenTasks > 0 && !tasksUnlocked) {
+                unlockSection.classList.remove('tasks__unlock--hidden');
+            } else {
+                unlockSection.classList.add('tasks__unlock--hidden');
+            }
+        }
+
+        // Unlock button click handler
+        unlockBtn.addEventListener('click', () => {
+            tasksUnlocked = true;
+            applyFilter();
+        });
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active tab
+                tabs.forEach(t => t.classList.remove('tasks__tab--active'));
+                tab.classList.add('tasks__tab--active');
+                applyFilter();
+            });
+        });
+
+        // Apply initial filter on page load
+        applyFilter();
+
+        // Connect/Share button click handler
+        document.addEventListener('click', (e) => {
+            const btn = e.target.closest('.task-item__btn');
+            if (!btn) return;
+
+            const taskItem = btn.closest('.task-item');
+            if (!taskItem || taskItem.dataset.status === 'completed') return;
+
+            // Mark as completed
+            taskItem.dataset.status = 'completed';
+
+            // Remove credits badge
+            const badges = taskItem.querySelector('.task-item__badges');
+            if (badges) badges.innerHTML = '';
+
+            // Replace button with completed status
+            const actions = taskItem.querySelector('.task-item__actions');
+            if (actions) {
+                actions.innerHTML = `
+                    <span class="task-item__status">
+                        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        Completed
+                    </span>
+                `;
+            }
+
+            // Move to bottom of list
+            tasksList.appendChild(taskItem);
+
+            // Re-apply current filter
+            applyFilter();
         });
     </script>
 </body>

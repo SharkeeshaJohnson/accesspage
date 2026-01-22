@@ -42,6 +42,7 @@
             font-size: 16px;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            height: 100%;
         }
 
         body {
@@ -50,6 +51,13 @@
             color: var(--color-text);
             line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero {
+            flex: 1;
         }
 
         /* Container */
@@ -80,7 +88,6 @@
 
         .header__main {
             background: #ECECEC;
-            border-bottom: 1px solid var(--color-text);
         }
 
         .header__inner {
@@ -108,9 +115,6 @@
             color: #C57741;
         }
 
-        .header.header--scrolled .header__main {
-            border-bottom: 1px solid var(--color-text);
-        }
 
         .header__blog-link {
             position: absolute;
@@ -250,7 +254,7 @@
 
         .hero__tagline {
             background: #ECECEC;
-            padding: 80px 0 40px;
+            padding: 140px 0 40px;
             text-align: center;
         }
 
@@ -309,25 +313,6 @@
         .hero__cta-btn:hover {
             background: var(--color-text);
             color: var(--color-white);
-        }
-
-        .hero__video-section {
-            padding: 40px 0 64px;
-        }
-
-        .hero__video {
-            width: calc(100% + 12%);
-            margin-left: -6%;
-            margin-right: -6%;
-            background: var(--color-bg-alt);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero__video video {
-            width: 100%;
-            height: auto;
-            display: block;
         }
 
         /* ================================
@@ -539,16 +524,6 @@
                 font-size: 1.125rem;
             }
 
-            .hero__video-section {
-                padding: 32px 0 48px;
-            }
-
-            .hero__video {
-                width: 100%;
-                margin-left: 0;
-                margin-right: 0;
-            }
-
             .footer {
                 padding: 52px 0 26px;
             }
@@ -636,10 +611,6 @@
                 font-size: 1rem;
             }
 
-            .hero__video-section {
-                padding: 24px 0 32px;
-            }
-
             .footer {
                 padding: 38px 0 19px;
             }
@@ -724,7 +695,6 @@
                     <a href="index.html" class="header__logo">
                         <span class="header__logo-text">ANUMA</span>
                     </a>
-                    <a href="portalaccess.html" class="header__cta">Get Started</a>
                     <button class="header__menu-btn" id="menuBtn" aria-label="Menu">
                         <span class="header__menu-line"></span>
                         <span class="header__menu-line"></span>
@@ -752,15 +722,6 @@
                 </h1>
                 <p class="hero__subtitle">Your contributions unlock access to your own private space.</p>
                 <a href="contributions.html" class="hero__cta-btn">Get Started</a>
-            </div>
-        </div>
-        <div class="hero__video-section">
-            <div class="container">
-                <div class="hero__video">
-                    <video autoplay loop muted playsinline>
-                        <source src="assets/images/access.mp4" type="video/mp4">
-                    </video>
-                </div>
             </div>
         </div>
     </section>
