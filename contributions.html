@@ -144,8 +144,9 @@
             margin-left: -6%;
             margin-right: -6%;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 2fr 1fr;
             gap: 16px;
+            height: clamp(250px, 40vh, 400px);
         }
 
         .hero__bento {
@@ -157,28 +158,77 @@
             display: flex;
             flex-direction: column;
             gap: 16px;
+            height: 100%;
         }
 
         .hero__bento--half {
             flex: 1;
+            min-height: 0;
         }
 
         .hero__bento--orange {
             background: #C57741;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 20px;
         }
 
         .hero__bento--green {
             background: #2E6F40;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .hero__bento-label {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            color: var(--color-white);
+            line-height: 1.05;
+            text-align: left;
+        }
+
+        .hero__bento-value {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            color: var(--color-white);
+            line-height: 1;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .hero__bento-unit {
+            font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
         }
 
         .hero__bento--large {
-            grid-column: span 2;
-            aspect-ratio: 4 / 3;
+            grid-column: span 1;
             display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 40px;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 20px;
             background: #595552;
+            height: 100%;
+        }
+
+        .hero__bento-cta {
+            font-size: clamp(0.85rem, 1.2vw, 1rem);
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--color-white);
         }
 
         .hero__bento-content {
@@ -203,7 +253,7 @@
             letter-spacing: -0.01em;
             line-height: 1.6;
             color: var(--color-white);
-            text-transform: uppercase;
+            text-transform: none;
         }
 
         /* Tasks UI */
@@ -211,6 +261,7 @@
             width: calc(100% + 12%);
             margin-left: -6%;
             margin-right: -6%;
+            margin-top: 20px;
         }
 
         .tasks__tabs {
@@ -630,16 +681,42 @@
                 width: 100%;
                 margin-left: 0;
                 margin-right: 0;
-                grid-template-columns: 2fr 1fr;
+                display: flex;
+                flex-direction: column;
                 gap: 12px;
+                height: auto;
             }
 
             .hero__bento--large {
-                padding: 32px;
+                padding: 20px;
+                min-height: 200px;
+            }
+
+            .hero__bento-stack {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+                height: auto;
+            }
+
+            .hero__bento--half {
+                min-height: 120px;
             }
 
             .hero__bento-title {
-                font-size: clamp(2rem, 4vw, 3rem);
+                font-size: clamp(1.5rem, 4vw, 2.5rem);
+            }
+
+            .hero__bento-label {
+                font-size: clamp(0.8rem, 1.8vw, 1rem);
+            }
+
+            .hero__bento-value {
+                font-size: clamp(1.75rem, 4vw, 2.5rem);
+            }
+
+            .hero__bento-unit {
+                font-size: clamp(0.7rem, 1.2vw, 0.9rem);
             }
 
             .tasks {
@@ -767,6 +844,7 @@
                 display: flex;
                 flex-direction: column;
                 gap: 12px;
+                height: auto;
             }
 
             .hero__bento-stack {
@@ -774,24 +852,30 @@
                 grid-template-columns: 1fr 1fr;
                 gap: 12px;
                 width: 100%;
+                height: auto;
             }
 
             .hero__bento--half {
                 aspect-ratio: 1 / 1;
-                min-height: 120px;
+                min-height: 100px;
             }
 
             .hero__bento--large {
                 aspect-ratio: auto;
-                min-height: 250px;
-                padding: 24px;
+                min-height: 180px;
+                padding: 16px;
+                height: auto;
             }
 
             .hero__bento-title {
-                font-size: clamp(1.75rem, 8vw, 2.5rem);
+                font-size: clamp(1.5rem, 6vw, 2rem);
             }
 
             .hero__bento-subtitle {
+                font-size: 0.85rem;
+            }
+
+            .hero__bento-label {
                 font-size: 0.9rem;
             }
 
@@ -975,10 +1059,17 @@
                             <h1 class="hero__bento-title">Your contributions to your private space starts from here.</h1>
                             <p class="hero__bento-subtitle">The credits you earn will manifest as AI credits upon the public release of our space.</p>
                         </div>
+                        <span class="hero__bento-cta">Start earning below</span>
                     </div>
                     <div class="hero__bento-stack">
-                        <div class="hero__bento hero__bento--half hero__bento--green"></div>
-                        <div class="hero__bento hero__bento--half hero__bento--orange"></div>
+                        <div class="hero__bento hero__bento--half hero__bento--green">
+                            <span class="hero__bento-label">Your Waitlist Number</span>
+                            <span class="hero__bento-value">#14</span>
+                        </div>
+                        <div class="hero__bento hero__bento--half hero__bento--orange">
+                            <span class="hero__bento-label">Total Credits Earned</span>
+                            <span class="hero__bento-value">200<span class="hero__bento-unit">CREDITS</span></span>
+                        </div>
                     </div>
                 </div>
                 <div class="tasks">
@@ -1221,7 +1312,7 @@
         const unlockBtn = document.getElementById('unlockBtn');
         const unlockSection = document.getElementById('unlockSection');
         let tasksUnlocked = false;
-        const VISIBLE_TASKS = 4;
+        const VISIBLE_TASKS = 5;
 
         function getActiveFilter() {
             const activeTab = document.querySelector('.tasks__tab--active');
